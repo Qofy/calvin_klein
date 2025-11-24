@@ -1,0 +1,316 @@
+{
+  "meta": {
+    "category": "Urlaubsmagazin",
+    "title": "Cycling means above all practical mobility. It is the best way to get everyday life in Berlin in a flexible and environmentally conscious way. A bigger bike trip is still on my Amazing",
+    "eyebrow": "Velophil",
+    "author": "Veröffentlicht",
+    "date": "15.07.2025",
+    "badge": {
+      "label": "Gefördert durch",
+      "logo": "/assets/article/top_section.png",
+      "alt": "Hinweis auf Förderung"
+    }
+  },
+  "nav": {
+    "brand": {
+      "label": "/assets/article/logo.png"
+    },
+    "actions": [
+      { "label": "Sparchen", "icon": "sprache" },
+      { "label": "Karte", "icon": "map" },
+      { "label": "Suche", "icon": "search" },
+      { "label": "Menü", "icon": "menu" }
+    ]
+  },
+  "breadcrumbs": [
+    { "label": "Startseite", "href": "#" },
+    { "label": "Urlaubsmagazin", "href": "#" },
+    { "label": "Bikepacking-Abenteuer: Lake District & Mecklenburgische Berlin im Vergleich", "href": "#" }
+  ],
+
+  "hero": {
+    "image": {
+      "src": ["/assets/article/bg1.jpg", "/assets/article/bg2.jpg"],
+      "alt": "Drei Freundinnen mit Gravelbikes am Wasser",
+      "width": 1425,
+      "height": 768
+    },
+    "kicker": "Bikepacking",
+"headline": "Diese Route fühlt sich an, als würdest du Berlin für eine Weile verlassen. Das Tegeler Fließ ist eines der artenreichsten Schutzgebiete der Stadt – ein Mix aus Feuchtwiesen, kleinen Waldstücken, Holzstegen und offenen Feldern.",
+    "subline": "Kwame Nkrumah"
+  },
+  "blocks": [
+    {
+      "type": "text-only",
+      "header": "Service ist unsere Stärke!",
+      "body": [
+        "Wir bieten exzellenten Werkstattservice, den Schlauch-Automaten für Pannen nach Feierabend, Speichenanfertigung, Techniktipps, Pflegetipps und mehr.",
+        "Von hier aus geht es für die drei Freunde auf Gravelwegen und kleinen Landsträßchen weiter, vorbei am blau glitzernden Feisnecksee und der Binnenmüritz bis in den beschaulichen Kurort Waren. Nicht minder beschaulich präsentiert sich auch der folgende Uferweg entlang des Tiefwarensees: Bemooste Kastanien, Eichen und Linden ragen übers Wasser, küssen bisweilen die Oberfläche des Sees. Und der scheint den Bikepackern zuzurufen: »Raus aus den Klamotten und rein ins Wasser!« Und warum auch nicht? Bei entsprechenden Temperaturen ist so eine Erfrischung doch mehr als willkommen!",
+        "...rund ums Fahrrad.Neben dem Verkauf und der Wartung von Fahrrädern beschäftigen wir uns auch noch mit anderen Dingen. Ob Reiseberichte, Ausfahrten, Ergonomieschulungen, Fahrtechnik- oder Reparaturkurse - wir sind mehr als „nur“ ein Fahrradladen. Auch interessante Veranstaltungen von Kollegen und anderen machen wir hier gerne publik."
+      ]
+    },
+
+    
+    {
+      "type": "video",
+      "poster": "/assets/article/section1.png",
+      "video": "https://youtu.be/-GdjMudX-zI?si=6ixRwdFygllJ42Ue",
+      "title": "YouTube Video blockiert",
+      "body": "Entsprechend Ihrer Einwilligungseinstellungen werden Inhalte von „YouTube Video“ derzeit blockiert. Klicken Sie auf „Mehr Infos“, um Details zu dieser Einbindung einzusehen und anschließend eine informierte Entscheidung treffen zu können. Klicken Sie auf „Zustimmen“, um die Einbindung zuzulassen und den Inhalt nachzuladen.",
+      "actions": [
+        { "label": "Mehr Infos", "variant": "secondary" },
+        { "label": "Zustimmen", "variant": "primary" }
+      ]
+    },
+    {
+      "type": "parallax",
+      "sceneId": "scene-1",
+      "width": "full",
+      "align": "center",
+      "spacing": 160,
+      "caption": "Ortlieb Care-Bag"
+    },
+     {
+      "type": "parallax",
+      "sceneId": "scene-1",
+      "width": "full",
+      "align": "center",
+      "spacing": 160,
+      "caption": "Helm Abus PowerDome"
+    },
+    {
+      "type": "section",
+      "title": "Freitagabend in Neustrelitz",
+      "body": [
+        "»Vorsicht an Gleis 3! Der Regionalexpress aus Berlin fährt ein.« Gerade einmal eine Stunde und fünfzehn Minuten hat er aus dem Zentrum der Hauptstadt bis hierher gebraucht. Und das Beste: Die Räder samt Gepäck hat er gleich mit befördert.",
+        "Mit einem kleinen Schlenker zur historischen Orangerie beginnt das Gravel-Abenteuer. Unterwegs sind die Seen immer ganz nah und die nass glänzende Uferpromenade von Neustrelitz ist der perfekte Spot für den ersten Sonnenuntergang der Tour."
+      ],
+      "image": {
+        "src": "/assets/article/segment_06.png",
+        "alt": "Pause am See"
+      }
+    },
+    {
+      "type": "quote",
+      "quote": "Nichts als Naturgeräusche und sanft rauschende Baumwipfel begleiten die glücklichen Städter hier in den Schlaf.",
+      "cite": "Bikepacking-Tagebuch"
+    },
+    {
+      "type": "section",
+      "title": "Nichts für Kalorienzähler",
+      "subtitle": "Einkehrschwung bei Üdi's Rastplatz",
+      "flip": true,
+      "body": [
+        "Wer am nächsten Morgen ausschläft und keine Kalorien zählen muss, sollte einen Frühstücks-Stopp im benachbarten Biergarten nicht versäumen.",
+        "Üppige Kuchen, herzhafte Fischbrötchen, leckerer Kaffee und andere Kleinigkeiten geben Kraft für den zweiten Tag im Sattel – und hinterm Haus steht eine Service-Station mit Kompressor-Luftpumpe bereit."
+      ],
+      "image": {
+        "src": "/assets/article/segment_07.png",
+        "alt": "Schwedischer Hof"
+      }
+    },
+    {
+      "type": "parallax",
+      "sceneId": "scene-1",
+      "width": "full",
+      "align": "right",
+      "spacing": 160,
+      "caption": "Ortlieb Back-Roller "
+    },
+
+     {
+      "type": "parallax",
+      "sceneId": "scene-1",
+      "width": "full",
+      "align": "right",
+      "spacing": 160,
+      "caption": "Ortlieb Care-Bag"
+    },
+    {
+      "type": "section",
+      "title": "Hier läuft's rund",
+      "flip": false,
+      "body": [
+        "Stop and go entlang des Wegweisers: Immer den Holztafeln nach führt die Route weiter Richtung Waren.",
+        "Der Tiefwarensee ist wunderschön anzusehen und perfekt für einen Sprung ins kühle Nass. Bei entsprechenden Temperaturen ist eine Erfrischung mehr als willkommen."
+      ],
+      "image": {
+        "src": "/assets/article/segment_08.png",
+        "alt": "Wegweiser in der Mecklenburgischen Schweiz"
+      }
+    },
+    {
+      "type": "parallax",
+      "sceneId": "scene-3",
+      "width": "full",
+      "align": "left",
+      "spacing": 120,
+      "caption": "Saldpassage & Wegweiser"
+    },
+    {
+      "type": "parallax",
+      "sceneId": "scene-3",
+      "width": "full",
+      "align": "left",
+      "spacing": 120,
+      "caption": "Waldpassage & Wegweiser"
+    },
+    {
+      "type": "parallax",
+      "sceneId": "scene-3",
+      "width": "full",
+      "align": "left",
+      "spacing": 120,
+      "caption": "Waldpassage & Wegweiser"
+    },
+    {
+      "type": "parallax",
+      "sceneId": "scene-3",
+      "width": "full",
+      "align": "left",
+      "spacing": 120,
+      "caption": "Waldpassage & Wegweiser"
+    },
+    {
+      "type": "parallax",
+      "sceneId": "scene-3",
+      "width": "full",
+      "align": "center",
+      "spacing": 160,
+      "caption": "Kaffee, Kuchen & Kettenöl"
+    },
+    {
+      "type": "section",
+      "title": "Stop and go bei Üdi's Rastplatz",
+      "flip": true,
+      "body": [
+        "Im Schatten alter Kastanien rollt das Trio zum nächsten Boxenstopp. Ein Herz für Radfahrer hat Üdi auch: Hinterm Haus steht eine Service-Station mit Kompressor bereit.",
+        "Von hier aus geht es über kleine Landsträßchen weiter bis in den behaglichen Kurort Waren. Nicht minder beschaulich präsentiert sich auch der folgende Uferweg am Tiefwarensee – er scheint den Bikepackern zuzuwinken: Raus aus den Klamotten und rein ins Wasser!"
+      ],
+      "image": {
+        "src": "/assets/article/segment_10.png",
+        "alt": "Bikepacking-Team am Feldweg"
+      }
+    },
+    {
+      "type": "parallax",
+      "sceneId": "scene-3",
+      "width": "full",
+      "align": "center",
+      "spacing": 140,
+      "caption": "Aufbruch Richtung Waren"
+    },
+    {
+      "type": "section",
+      "title": "Harz Bikeventure im Mai 2026: save the date!",
+      "subtitle": "Perfekter Zwischenstopp",
+      "flip": false,
+      "body": [
+        " Ein ganzes Wochenende voller Fahrspaß, neuen Erfahrungen und einem großen Fahrradnetzwerk - bei unwirklich schönem Wetter!",
+        "Wer mag, lauscht in der Konzertscheune klassischer Musik, besucht das Gutscafé oder rollt direkt weiter Richtung Peene und Demmin."
+      ],
+      "image": {
+        "src": "/assets/article/segment_09.png",
+        "alt": "Schloss Ulrichshusen"
+      }
+    },
+    {
+      "type": "gallery",
+      "title": "Unterwegs Impressionen",
+      "items": [
+        { "src": "/assets/article/segment_10.png", "alt": "Schotterpassage" },
+        { "src": "/assets/article/segment_12.png", "alt": "Abkühlung am Kanal" },
+        { "src": "/assets/article/segment_15.png", "alt": "Aussicht ins Grüne" }
+      ]
+    }
+  ],
+  "parallaxScenes": [
+    {
+      "id": "scene-1",
+      "layers": [
+        { "src": "/assets/parallax/scene1/item-1.jpg", "alt": "Luftbild Schlossgarten", "caption":"Ortlieb Back-Roller"},
+        { "src": "/assets/parallax/scene1/item-2.webp", "alt": "Kartenoverlay", "caption":"Helm Abus PowerDome"},
+        { "src": "/assets/parallax/scene1/item-3.webp", "alt": "Schrift Ebene 1", "caption":"Ortlieb Back-Roller bag" },
+        { "src": "/assets/parallax/scene1/item-4.webp", "alt": "Schrift Ebene 2" ,"caption":"Ortlieb Care-Bag"}
+      ]
+    },
+    {
+      "id": "scene-3",
+      "layers": [
+        { "src": "/assets/bike/b1.png", "alt": "Kaffeepause","caption":"Velotraum Rooter R2 Edition" },
+        { "src": "/assets/bike/b2.png", "alt": "Freunde am Tisch","caption":"Patria Tribos"},
+        { "src": "/assets/bike/b3.png", "alt": "Textlayer 1","caption":"Bromton Eletric G-Line" },
+        { "src": "/assets/bike/b4.png", "alt": "Textlayer 2", "caption":"Brompton Eletric C-Line"},
+        { "src": "/assets/bike/b5.png", "alt": "Textlayer 2", "caption":"Brompton G-Line"},
+        { "src": "/assets/bike/b6.png", "alt": "Textlayer 2", "caption":"VSF-Fahrradmanfaktu AX-100"}
+      ]
+    }
+  ],
+  "sidebar": {
+    "modules": [
+      {
+        "type": "map",
+        "title": "In der Nähe",
+        "image": "/assets/article/segment_13.png",
+        "pois": ["Neustrelitz", "Waren (Müritz)", "Schloss Ulrichshusen"]
+      },
+      {
+        "type": "links",
+        "title": "Weitere Reviere",
+        "items": [
+          "Von Neustrelitz zur Feldberger Seenlandschaft",
+          "Gravel-Abenteuer zwischen Rostock und Demmin",
+          "Sieben Tage auf dem Eiszeitroute-Rundkurs",
+          "Kurzurlaub in der Mecklenburgischen Schweiz"
+        ]
+      }
+    ]
+  },
+
+  "splitview": {
+    "header": "Harz Bikeventure im Mai 2026: save the date!",
+    "head": "Perfekter Zwischenstopp für eine Bikepacking-Tour",
+    "body": [
+      " Ein ganzes Wochenende voller Fahrspaß, neuen Erfahrungen und einem großen Fahrradnetzwerk - bei unwirklich schönem Wetter! Sechs befreundete Fahrradläden aus der ganzen Republik (Rad&Tour Cuxhaven, Radhaus Büren, Fahrradies Halle, Pedalwerk Baunatal, Radladen Bamberg und wir, velophil Berlin) haben sich zusammengetan, um für uns und unsere Kunden ein ganz besonderes Fahrradwochenende zu organisieren.",
+      "Im letzten Jahr waren es vier Fahrradhersteller, dieTesträder zur Verfügung stellten: Rennräder, Gravelbikes, E-Gravelbikes und E-MTBs kamen aus Hamburg von der Firma Stevens , eine große Vielfalt an elektrifizierten Trekking- Stadt- und Lastenrädern von Riese&Müller aus Mühltal, Rennräder, Gravelbikes mit und ohne E von der österreichischen Firma Simplon und schlanke elegante Stahlräder von tout terrain aus Freiburg.",
+      "So war es für alle Teilnehmer:innen möglich, einmal in unbekannte Fahrradwelten zu schnuppern. Großartig zB die gemischte Tour auf den Brocken, alle Fahrradgattungen waren dabei (sogar ein Brompton), mit und ohne E.",
+      "Für die Mountanbiker gab es Fahrtechniktraining, das so manchen mehr Zutrauen gab für die teilweise recht verblockten Trails. Auch zum Graveln hatte die Gegend um Braunlage einiges zu bieten. Und welche Strecken sich mit dem Lastenrad meistern lassen, hat nicht wenige überrascht."
+    ]
+  },
+
+   "splitview2": {
+    "header": "Die velophil Ergonomieberatung",
+    "head": "Wir setzen Sie richtig aufs Rad: individuelle Beratung",
+    "body": [
+      "Wir haben den Anspruch, jedes von uns verkaufte Rad so anzupassen, dass sein neuer Besitzer / seine neue Besitzerin schmerzfrei und entspannt damit fahren kann. Wenn wir die Räder auf Lager haben, lässt sich das meist wunderbar am „lebenden Objekt“ durchführen: durch Probefahrten, bei denen wir uns genau die Körperhaltung auf dem Rad anschauen und die nötigen Anpassungen an Sattel, Lenker und Vorbau vornehmen",
+      "Manchmal ist es aber so, dass Körpermaße von der Norm abweichen, weil jemand zB einen sehr langen Oberkörper oder sehr lange Beine hat. Das lässt sich dann mit Serienfahrrädern nicht mehr gut abbilden und wir müssen mit dem fiktiven Rad - unserem Velochecker - arbeiten.",
+      "So war es für alle Teilnehmer:innen möglich, einmal in unbekannte Fahrradwelten zu schnuppern. Großartig zB die gemischte Tour auf den Brocken, alle Fahrradgattungen waren dabei (sogar ein Brompton), mit und ohne E.",
+      "Auch um zu ermitteln, wie ein nicht lagerndes Rad beschaffen sein müsste, oder ob ein bereits existierendes Rad passend umgebaut werden könnte, eignet sich die Vermessung."
+    ],
+    "bg":"/assets/article/04_Ergonomie.jpg",
+    "src": "/assets/article/Griffe.jpg"
+  },
+
+  "splitview3": {
+    "header": "Dienstradleasing, der günstige Weg zum neuen Fahrrad",
+    "head": "Wir setzen Sie richtig aufs Rad: individuelle Beratung",
+    "body": [
+      "Dank der neuen Steuerregelung seit 2012 werden Dienstfahrräder weitestgehend wie Dienstautos behandelt. Das heisst: der Arbeitgeber kann die Anschaffung eines hochwertigen Fahrrades für Angestellte und die laufenden Kosten als Betriebsausgaben absetzen.",
+      "Insgesamt sollen Arbeitgeber ihren Mitarbeitern über Fahrradleasing so Ersparnisse von bis zu 50% im Vergleich zum Privatkauf ermöglichen können. Selbst wenn der Arbeitgeber sich nicht an den Leasingraten beteiligen will, lohnt sich das Leasing. Auch bei einer Gehaltsumwandlung ist das Fahrrad am Ende durch Steuerersparnis günstiger zu bekommen. Nicht nur Arbeitnehmer, auch Selbstständige und Freiberufler können kostensparend leasen statt zu kaufen. Ein weiterer Vorteil: der Diebstahlschutz ist inclusive.",
+      "Vollkaskoschutz, Wartungs- und Instandhaltungsschutz können auf Wunsch in den Vertrag integriert werden.",
+      "Auch um zu ermitteln, wie ein nicht lagerndes Rad beschaffen sein müsste, oder ob ein bereits existierendes Rad passend umgebaut werden könnte, eignet sich die Vermessung."
+    ],
+    "src": "/assets/article/splitview3.jpg"
+  },
+   "splitview4": {
+    "header": "Bei Schmerzen",
+    "head": " Osteopatische Beratung mit Regina Marunde ",
+    "body": [
+      "Durch Bewegungsmangel und eine ungünstige Körperhaltung am Schreibtisch und am Computer kann eine Fehlhaltung entstehen. Wird diese dann noch in der Freizeit durch eine falsche Sitzposition auf dem Rad verstärkt, verschlimmern sich die Beschwerden mit der Zeit. Mit der oft gehörten Empfehlung der 'aufrechten Sitzhaltung' kommt man hier nicht wirklich weiter. Viel mehr ist es wichtig, eine individuell passende Sitzposition zu ermitteln und dazu ein passendes Training zur funktionalen Fitness zusammenzustellen, welches Haltungsschäden korrigieren und Beschwerden mindern kann.",
+      "Regina Marunde, professionelle Radsportlerin und ausgebildete Physiotherapeutin und Osteopathin, hat mit ihrer langjährigen Erfahrung in der Ergonomieberatung schon einigen Menschen zu einem schmerzfreien „Fahrradleben“ verholfen.",
+      "Die Beratung findet als Einzelsitzung nur nach vorheriger Anmeldung direkt in der Praxis von Osteomed in der Auerbachstr. 19 statt. Terminabsprachen und Preisauskünfte bitte direkt bei  Regina Marunde ."
+    ],
+     "bg":"/assets/article/schmerzen.jpg",
+    "src": "/assets/article/schmerzen-bg.jpg"
+  }
+}
