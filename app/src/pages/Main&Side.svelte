@@ -4,7 +4,12 @@
 
 <main>
 <div class="side-main">
-    <div class="hero"> sgdfhs</div>
+    <div class="hero">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
     <div class="sidebar"></div>
 </div>
 <div >shdgsh</div>
@@ -34,5 +39,7 @@ height: 100%;
 background-color: blue;
 width: 70%;
 height: 100%;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(min(300px,100%),1fr));
 }
 </style>
