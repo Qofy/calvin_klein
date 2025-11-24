@@ -1,6 +1,7 @@
 <script>
-  import App from "../App.svelte";
+//   import App from "../App.svelte";
 import "../component/style.css"
+
 
 import {Search,Globe,Heart,UserRound,LucideHandbag} from "lucide-svelte"
 //   import { from } from "rxjs";

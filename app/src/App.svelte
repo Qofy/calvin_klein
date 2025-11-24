@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* background-color: aqua; */
+    /* background-color: aqua;  */
     gap: 10rem;
     height: 100%;
   }
