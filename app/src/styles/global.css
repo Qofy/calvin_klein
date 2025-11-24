@@ -1,4 +1,10 @@
-:root {
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
   color-scheme: light;
   font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
@@ -68,4 +74,4 @@ button {
   .sidebar ul {
     column-count: 2;
   }
-}
+} */

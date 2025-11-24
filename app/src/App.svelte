@@ -1,9 +1,11 @@
 <script>
+  import Navogation from "./component/Navogation.svelte";
+
 
 </script>
 
 <main>
-  <h1>hello</h1>
+  <Navogation/>
 </main>
 
 <style>
