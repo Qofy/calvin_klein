@@ -75,6 +75,7 @@
     font-weight: 600;
     margin-bottom: 2rem;
     letter-spacing: 0.5px;
+    color: #ce2f24;
   }
 
   .carousel-wrapper {
@@ -206,7 +207,7 @@
   .add-to-cart {
     width: 100%;
     padding: 0.75rem 1rem;
-    background-color: #1a1919;
+    background-color: #ce2f24;
     color: white;
     border: none;
     font-size: 0.875rem;

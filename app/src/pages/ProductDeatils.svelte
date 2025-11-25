@@ -164,6 +164,8 @@
     font-weight: 400;
     margin-bottom: 1rem;
     letter-spacing: 0.5px;
+    color: #ce2f24;
+
   }
 
   /* Price Section */
@@ -201,10 +203,13 @@
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 1rem;
+    color: #ce2f24;
+
   }
 
   .selected {
     font-weight: 600;
+    color: #000;
   }
 
   .color-options {
@@ -241,6 +246,8 @@
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 1rem;
+    color: #ce2f24;
+
   }
 
   .size-options {
@@ -270,7 +277,7 @@
   }
 
   .size-guide {
-    color: #000;
+        color: #ce2f24;
     text-decoration: underline;
     font-size: 0.875rem;
   }
@@ -285,7 +292,7 @@
   .add-to-cart {
     flex: 1;
     padding: 1rem;
-    background-color: #000;
+    background-color: #ce2f24;
     color: white;
     border: none;
     font-size: 1rem;
@@ -328,7 +335,7 @@
   }
 
   .learn-more {
-    color: #000;
+    color: #ce2f24;
     text-decoration: underline;
     font-size: 0.875rem;
   }
@@ -344,6 +351,7 @@
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
+    color: #ce2f24;
   }
 
   .fit-guide p {

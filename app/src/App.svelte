@@ -79,6 +79,7 @@
     z-index: 1000;
     box-sizing: border-box;
     background-image: linear-gradient(to bottom right, #e1d7bd, #e5dcc6, #efeade);
+    color: #ce2f24;
   }
 
   .nav{
