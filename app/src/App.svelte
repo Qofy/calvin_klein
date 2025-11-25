@@ -3,8 +3,14 @@
 
   import bk1 from "../public/assets/bike/b1.png"
 import bk2 from "../public/assets/bike/b2.png"
+  import SidebarPageLayout from "./component/Sidebar_page-layout.svelte";
 // import bk3 from "../public/assets/bike/b3.png"
 // import bk4 from "../public/assets/bike/b4.png"
+
+const siderLinks =[
+    "Damen ","Unterwäsche","Unterhosen","Bikinislips"
+]
+$: sideLink = siderLinks.join("-")
 
 </script>
 
@@ -41,10 +47,18 @@ import bk2 from "../public/assets/bike/b2.png"
         <!-- <div style="background-image: url({bk3});"></div>
         <div style="background-image: url({bk4});"></div> -->
   </div>
-  
-  <div class="sidebar">
 
+  <div class="sidebar">
+    <div class="links">
+      {#each sideLink as link, index}
+        <a href="#">
+          {link}
+        </a>
+      {/each}
+    </div>
   </div>
+
+
   <div class="four">sidbckjsvk</div>
   <div class="five">vdkjdkfj</div>
 </main>
@@ -104,13 +118,24 @@ import bk2 from "../public/assets/bike/b2.png"
     background-size:cover;
     height: 40rem;
 }
-  
+  /**----------------Sidebar -------------------------*/
   .sidebar{
-    background-color: burlywood;
+    /* background-color: burlywood; */
     grid-column: 4 / 6;
     grid-row: 2 / 7;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 2rem;
   }
   
+   .links{
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    width: 20rem;
+
+
+  }
   .four{
     background-color: cadetblue;
     grid-column: 1 / 6;
