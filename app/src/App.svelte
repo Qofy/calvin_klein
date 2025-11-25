@@ -76,7 +76,7 @@ $: sideLink=siderLinks.map(item=>item.toString());
     <Carousel/>
 </div>
   </div>
-  <div class="five">vdkjdkfj</div>
+  <div class="footer">vdkjdkfj</div>
 </main>
 
 <style>
@@ -163,7 +163,7 @@ $: sideLink=siderLinks.map(item=>item.toString());
     grid-row: 6/ 8;
   }
 
-  .five{
+  .footer{
     background-color: brown;
     grid-row: 8/ 10;
     grid-column: 1 / 6;
