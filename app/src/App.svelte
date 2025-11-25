@@ -70,7 +70,9 @@ $: sideLink=siderLinks.map(item=>item.toString())
   </div>
 
 
-  <div class="four">sidbckjsvk</div>
+  <div class="carousel">
+    
+  </div>
   <div class="five">vdkjdkfj</div>
 </main>
 
@@ -148,15 +150,15 @@ $: sideLink=siderLinks.map(item=>item.toString())
 
 
   }
-  .four{
+  .carousel{
     background-color: cadetblue;
     grid-column: 1 / 6;
-    grid-row: 7 / 9;
+    grid-row: 7 / 8;
   }
 
   .five{
     background-color: brown;
-    grid-row: 9 / 11;
+    grid-row: 8/ 11;
     grid-column: 1 / 6;
   }
 </style>
