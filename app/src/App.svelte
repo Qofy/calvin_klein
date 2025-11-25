@@ -9,13 +9,14 @@ import bk2 from "../public/assets/bike/b2.png"
   import ProductSizeSlector from "./component/ProductSizeSlector.svelte";
   import ButtonCart from "./component/ButtonCart.svelte";
   import CardPromo from "./component/CardPromo.svelte";
+  import Carousel from "./pages/Carousel.svelte";
 // import bk3 from "../public/assets/bike/b3.png"
 // import bk4 from "../public/assets/bike/b4.png"
 
 const siderLinks =[
     "Damen ","Unterwäsche","Unterhosen","Bikinislips"
-]
-$: sideLink=siderLinks.map(item=>item.toString())
+];
+$: sideLink=siderLinks.map(item=>item.toString());
 
 </script>
 
@@ -71,7 +72,9 @@ $: sideLink=siderLinks.map(item=>item.toString())
 
 
   <div class="carousel">
-    
+  <div class="carousel-section">
+    <Carousel/>
+</div>
   </div>
   <div class="five">vdkjdkfj</div>
 </main>
@@ -85,7 +88,7 @@ $: sideLink=siderLinks.map(item=>item.toString())
   main{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 65px repeat(9, 1fr);
+    grid-template-rows: 65px repeat(8, 1fr);
     min-height: 100vh;
   }
   
@@ -121,8 +124,9 @@ $: sideLink=siderLinks.map(item=>item.toString())
   .hero{
     /* background-color: blue; */
     grid-column: 1 / 4;
-    grid-row: 2 / 7;
+    grid-row: 2 / 6;
     grid-template-columns: repeat(2, minmax(min(300px,100%),1fr));
+    /* background-color: #d32f2f; */
   }
 
   .hero div{
@@ -131,14 +135,16 @@ $: sideLink=siderLinks.map(item=>item.toString())
     background-size:cover;
     height: 40rem;
 }
+
   /**----------------Sidebar -------------------------*/
   .sidebar{
     /* background-color: burlywood; */
     grid-column: 4 / 6;
-    grid-row: 2 / 7;
+    grid-row: 2 / 6;
     display: flex;
     flex-direction: column;
     padding: 5rem 2rem;
+    /* background-color: rgb(161, 200, 234); */
   }
   
    .links{
@@ -150,15 +156,16 @@ $: sideLink=siderLinks.map(item=>item.toString())
 
 
   }
+/*----------------Carousel-----------------*/
   .carousel{
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
     grid-column: 1 / 6;
-    grid-row: 7 / 8;
+    grid-row: 6/ 8;
   }
 
   .five{
     background-color: brown;
-    grid-row: 8/ 11;
+    grid-row: 8/ 10;
     grid-column: 1 / 6;
   }
 </style>
