@@ -7,6 +7,7 @@ import bk2 from "../public/assets/bike/b2.png"
   import ProductHeader from "./component/ProductHeader.svelte";
   import ProductColorSlector from "./component/ProductColorSlector.svelte";
   import ProductSizeSlector from "./component/ProductSizeSlector.svelte";
+  import ButtonCart from "./component/ButtonCart.svelte";
 // import bk3 from "../public/assets/bike/b3.png"
 // import bk4 from "../public/assets/bike/b4.png"
 
@@ -63,6 +64,7 @@ $: sideLink=siderLinks.map(item=>item.toString())
     <ProductHeader/>
     <ProductColorSlector/>
     <ProductSizeSlector/>
+    <ButtonCart/>
   </div>
 
 
