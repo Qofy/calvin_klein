@@ -103,7 +103,7 @@
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    background: #000;
+    /* background: #000; */
     width: 20%;
   }
 
@@ -113,8 +113,9 @@
     aspect-ratio: 3/4;
     overflow: hidden;
     margin-bottom: 0.75rem;
-    width: 70%;
+    width: 100%;
     height: 80%;
+    /* background-color: #ce2f24; */
   }
 
   .product-image img {
