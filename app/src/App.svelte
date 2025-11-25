@@ -4,13 +4,16 @@
   import bk1 from "../public/assets/bike/b1.png"
 import bk2 from "../public/assets/bike/b2.png"
   import SidebarPageLayout from "./component/Sidebar_page-layout.svelte";
+  import ProductHeader from "./component/ProductHeader.svelte";
+  import ProductColorSlector from "./component/ProductColorSlector.svelte";
+  import ProductSizeSlector from "./component/ProductSizeSlector.svelte";
 // import bk3 from "../public/assets/bike/b3.png"
 // import bk4 from "../public/assets/bike/b4.png"
 
 const siderLinks =[
     "Damen ","Unterwäsche","Unterhosen","Bikinislips"
 ]
-$: sideLink = siderLinks.join("-")
+$: sideLink=siderLinks.map(item=>item.toString())
 
 </script>
 
@@ -56,6 +59,10 @@ $: sideLink = siderLinks.join("-")
         </a>
       {/each}
     </div>
+
+    <ProductHeader/>
+    <ProductColorSlector/>
+    <ProductSizeSlector/>
   </div>
 
 
@@ -133,6 +140,7 @@ $: sideLink = siderLinks.join("-")
     display: flex;
     justify-content: space-between;
     width: 20rem;
+    color: rgb(153, 153, 153);
 
 
   }
