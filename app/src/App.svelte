@@ -10,6 +10,8 @@ import bk2 from "../public/assets/bike/b2.png"
   import ButtonCart from "./component/ButtonCart.svelte";
   import CardPromo from "./component/CardPromo.svelte";
   import Carousel from "./pages/Carousel.svelte";
+  import Footer from "./pages/Footer.svelte";
+  import ProductDeatils from "./pages/ProductDeatils.svelte";
 // import bk3 from "../public/assets/bike/b3.png"
 // import bk4 from "../public/assets/bike/b4.png"
 
@@ -55,19 +57,7 @@ $: sideLink=siderLinks.map(item=>item.toString());
   </div>
 
   <div class="sidebar">
-    <div class="links">
-      {#each sideLink as link, index}
-        <a href="#">
-          {link}
-        </a>
-      {/each}
-    </div>
-
-    <ProductHeader/>
-    <ProductColorSlector/>
-    <ProductSizeSlector/>
-    <ButtonCart/>
-    <CardPromo/>
+    <ProductDeatils/>
   </div>
 
 
@@ -76,7 +66,9 @@ $: sideLink=siderLinks.map(item=>item.toString());
     <Carousel/>
 </div>
   </div>
-  <div class="footer">vdkjdkfj</div>
+  <footer class="footer">
+    <Footer/>
+  </footer>
 </main>
 
 <style>
@@ -88,7 +80,7 @@ $: sideLink=siderLinks.map(item=>item.toString());
   main{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 65px repeat(8, 1fr);
+    grid-template-rows: 65px repeat(9, 1fr);
     min-height: 100vh;
   }
   
@@ -124,7 +116,7 @@ $: sideLink=siderLinks.map(item=>item.toString());
   .hero{
     /* background-color: blue; */
     grid-column: 1 / 4;
-    grid-row: 2 / 6;
+    grid-row: 2 / 7;
     grid-template-columns: repeat(2, minmax(min(300px,100%),1fr));
     /* background-color: #d32f2f; */
   }
@@ -133,29 +125,21 @@ $: sideLink=siderLinks.map(item=>item.toString());
     background-position: center;
     background-repeat: no-repeat;
     background-size:cover;
-    height: 40rem;
+    height: 45rem;
 }
 
   /**----------------Sidebar -------------------------*/
   .sidebar{
     /* background-color: burlywood; */
     grid-column: 4 / 6;
-    grid-row: 2 / 6;
+    grid-row: 2 / 7;
     display: flex;
     flex-direction: column;
     padding: 5rem 2rem;
     /* background-color: rgb(161, 200, 234); */
   }
   
-   .links{
-    /* background-color: aqua; */
-    display: flex;
-    justify-content: space-between;
-    width: 20rem;
-    color: rgb(153, 153, 153);
-
-
-  }
+  
 /*----------------Carousel-----------------*/
   .carousel{
     /* background-color: cadetblue; */
@@ -164,8 +148,8 @@ $: sideLink=siderLinks.map(item=>item.toString());
   }
 
   .footer{
-    background-color: brown;
-    grid-row: 8/ 10;
+    /* background-color: brown; */
+    grid-row: 8/ 11;
     grid-column: 1 / 6;
   }
 </style>
