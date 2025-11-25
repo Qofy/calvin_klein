@@ -1,65 +1,9 @@
 <script>
-  import { Heart } from "lucide-svelte";
-  import { ChevronRight } from "lucide-svelte";
-
-  const products = [
-    {
-      id: 1,
-      image: "/path/to/image1.jpg",
-      title: "String mit Spitze -...",
-      originalPrice: "22,00 €",
-      salePrice: "22,00 €",
-      discount: null
-    },
-    {
-      id: 2,
-      image: "/path/to/image2.jpg",
-      title: "String - Invisibles...",
-      originalPrice: "17,90 €",
-      salePrice: "14,00 €",
-      discount: "-20%"
-    },
-    {
-      id: 3,
-      image: "/path/to/image3.jpg",
-      title: "Slip - Invisibles...",
-      originalPrice: "17,90 €",
-      salePrice: "14,00 €",
-      discount: "-20%"
-    },
-    {
-      id: 4,
-      image: "/path/to/image4.jpg",
-      title: "String - Icon Logo",
-      originalPrice: "17,90 €",
-      salePrice: "14,00 €",
-      discount: "-20%"
-    },
-    {
-      id: 5,
-      image: "/path/to/image5.jpg",
-      title: "String in limitierter...",
-      originalPrice: "22,90 €",
-      salePrice: "16,00 €",
-      discount: "-30%"
-    },
-    {
-      id: 6,
-      image: "/path/to/image6.jpg",
-      title: "Slip mit hohem...",
-      originalPrice: "24,90 €",
-      salePrice: "19,00 €",
-      discount: "-20%"
-    },
-    {
-      id: 7,
-      image: "/path/to/image7.jpg",
-      title: "String in limitierter...",
-      originalPrice: "22,90 €",
-      salePrice: "16,00 €",
-      discount: "-30%"
-    }
-  ];
+  import { Heart, ChevronRight } from "lucide-svelte";
+  
+  export let data;
+  
+  const { title, products } = data;
 
   let scrollContainer;
   
@@ -71,7 +15,7 @@
 </script>
 
 <div class="carousel-section">
-  <h2>FÜR DICH EMPFOHLEN</h2>
+  <h2>{title}</h2>
   
   <div class="carousel-wrapper">
     <div class="carousel-container" bind:this={scrollContainer}>
@@ -118,6 +62,7 @@
     </button>
   </div>
 </div>
+
 
 <style>
   .carousel-section {

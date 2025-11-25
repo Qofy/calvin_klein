@@ -1,34 +1,22 @@
 <script>
-  import {Search, Globe, Heart, UserRound, ShoppingBag} from "lucide-svelte"
-
-  import bk1 from "../public/assets/bike/b1.png"
-import bk2 from "../public/assets/bike/b2.png"
-  import SidebarPageLayout from "./component/Sidebar_page-layout.svelte";
-  import ProductHeader from "./component/ProductHeader.svelte";
-  import ProductColorSlector from "./component/ProductColorSlector.svelte";
-  import ProductSizeSlector from "./component/ProductSizeSlector.svelte";
-  import ButtonCart from "./component/ButtonCart.svelte";
-  import CardPromo from "./component/CardPromo.svelte";
+  import {Search, Globe, Heart, UserRound, ShoppingBag} from "lucide-svelte";
+  import ProductDetails from "./pages/ProductDeatils.svelte";
   import Carousel from "./pages/Carousel.svelte";
   import Footer from "./pages/Footer.svelte";
-  import ProductDeatils from "./pages/ProductDeatils.svelte";
-// import bk3 from "../public/assets/bike/b3.png"
-// import bk4 from "../public/assets/bike/b4.png"
-
-const siderLinks =[
-    "Damen ","Unterwäsche","Unterhosen","Bikinislips"
-];
-$: sideLink=siderLinks.map(item=>item.toString());
-
+  
+  // Import the JSON data
+  import data from '../public/data/article.json';
+  
+  // Destructure the data
+  const { navigation, product, carousel, footer } = data;
 </script>
 
 <main>
   <nav>
     <div class="nav">
-      <a href="#">Damen</a>
-      <a href="#">Herren</a>
-      <a href="#">Kinder</a>
-      <a href="#">Black Friday</a>
+      {#each navigation.mainLinks as link}
+        <a href={link.href}>{link.label}</a>
+      {/each}
     </div>
     
     <div>
@@ -50,24 +38,23 @@ $: sideLink=siderLinks.map(item=>item.toString());
   </nav>
   
   <div class="hero">
-     <div style="background-image: url({bk1});"></div>
-        <div style="background-image: url({bk2});"></div>
-        <!-- <div style="background-image: url({bk3});"></div>
-        <div style="background-image: url({bk4});"></div> -->
+    {#each product.hero.images as image}
+      <div style="background-image: url({image});"></div>
+    {/each}
   </div>
 
   <div class="sidebar">
-    <ProductDeatils/>
+    <ProductDetails data={product} />
   </div>
-
 
   <div class="carousel">
-  <div class="carousel-section">
-    <Carousel/>
-</div>
+    <div class="carousel-section">
+      <Carousel data={carousel} />
+    </div>
   </div>
+  
   <footer class="footer">
-    <Footer/>
+    <Footer data={footer} />
   </footer>
 </main>
 

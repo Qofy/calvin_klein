@@ -1,16 +1,12 @@
 <script>
   import { Heart } from "lucide-svelte";
   
-  let selectedColor = "Black";
+  export let data;
+  
+  const { breadcrumbs, title, price, colors, sizes, fitGuide, payment, details, shipping } = data;
+  
+  let selectedColor = colors[0].name;
   let selectedSize = "";
-  
-  const colors = [
-    { name: "Black", image: "/path/to/black-image.jpg" },
-    { name: "White", image: "/path/to/white-image.jpg" }
-  ];
-  
-  const sizes = ["XS", "S", "M", "L", "XL"];
-  
   let showDetails = false;
   let showShipping = false;
   
@@ -26,18 +22,18 @@
 <div class="product-details">
   <!-- Breadcrumb -->
   <div class="breadcrumb">
-    Damen - Unterwäsche - Unterhosen - Bikinislips
+    {breadcrumbs.map(b => b.label).join(' - ')}
   </div>
 
   <!-- Product Title -->
-  <h1>Slips Aus Transparentem Mesh</h1>
+  <h1>{title}</h1>
 
   <!-- Price -->
   <div class="price-section">
-    <div class="current-price">8,00 € <span class="vat">(inkl. MwSt.)</span></div>
+    <div class="current-price">{price.current} <span class="vat">{price.vat}</span></div>
     <div class="price-info">
-      <p>Niedrigster Preis der letzten 30 Tage: 8,00 €</p>
-      <p>Ursprünglich verkauft für: 17,90 €</p>
+      <p>Niedrigster Preis der letzten 30 Tage: {price.lowest30Days}</p>
+      <p>Ursprünglich verkauft für: {price.original}</p>
     </div>
   </div>
 
@@ -84,21 +80,21 @@
 
   <!-- Payment Info -->
   <div class="payment-info">
-    <p>In bis zu 30 Tagen bezahlen. Sicher mit <strong>Klarna</strong></p>
-    <a href="#" class="learn-more">Mehr erfahren</a>
+    <p>{payment.text} <strong>{payment.provider}</strong></p>
+    <a href={payment.learnMoreLink} class="learn-more">Mehr erfahren</a>
   </div>
 
   <!-- Fit Guide -->
   <div class="fit-guide">
-    <h4>Fällt Klein Aus.</h4>
-    <p>Wähle eine Nummer größer für eine normale Passform.</p>
+    <h4>{fitGuide.title}</h4>
+    <p>{fitGuide.description}</p>
     <div class="fit-slider">
-      <span class="fit-label left">Klein</span>
+      <span class="fit-label left">{fitGuide.scale.labels[0]}</span>
       <div class="slider-track">
         <div class="slider-indicator"></div>
       </div>
-      <span class="fit-label center">Der Größe entsprechend</span>
-      <span class="fit-label right">Groß</span>
+      <span class="fit-label center">{fitGuide.scale.labels[1]}</span>
+      <span class="fit-label right">{fitGuide.scale.labels[2]}</span>
     </div>
   </div>
 
@@ -110,25 +106,25 @@
     </button>
     {#if showDetails}
       <div class="accordion-content">
-        <p>Diese Slips weisen geschnürte Seiten auf und bestehen aus</p>
-        <p>leichtem, elastischem Mesh, der kaum spürbar auf der Haut liegt.</p>
+        <p>{details.description}</p>
         
         <ul>
-          <li>• transparente Mesh-Mikrofaser</li>
-          <li>• mittlere Leibhöhe</li>
-          <li>• seitliche Schnürung</li>
-          <li>• farblich passender Calvin Klein Logo-Elastikbund</li>
+          {#each details.features as feature}
+            <li>• {feature}</li>
+          {/each}
         </ul>
         
-        <p>100 % Nylon<br>
-        Maschinenwäsche<br>
-        bei niedriger Temperatur trocknen</p>
+        <p>{details.material}<br>
+        {#each details.care as care}
+          {care}<br>
+        {/each}
+        </p>
         
-        <p>Herstellungsland: Sri Lanka</p>
+        <p>Herstellungsland: {details.origin}</p>
         
-        <p>Pantys können nur zurückgegeben werden, sofern sie sich in der Originalverpackung im originalen, ungetragenen Zustand mit allen Etiketten befinden.</p>
+        <p>{details.returnPolicy}</p>
         
-        <p class="product-code">000QD5162EUB1</p>
+        <p class="product-code">{details.sku}</p>
       </div>
     {/if}
   </div>
@@ -136,16 +132,17 @@
   <!-- Shipping Section -->
   <div class="accordion-section">
     <button class="accordion-header" on:click={toggleShipping}>
-      <span>Versand & Rücksendungen</span>
+      <span>{shipping.title}</span>
       <span class="icon">{showShipping ? '−' : '+'}</span>
     </button>
     {#if showShipping}
       <div class="accordion-content">
-        <p>Versandinformationen werden hier angezeigt...</p>
+        <p>{shipping.content}</p>
       </div>
     {/if}
   </div>
 </div>
+
 
 <style>
   .product-details {
@@ -298,7 +295,9 @@
   }
 
   .add-to-cart:hover {
-    background-color: #333;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid rgba(102, 102, 102);
   }
 
   .favorite-btn {
