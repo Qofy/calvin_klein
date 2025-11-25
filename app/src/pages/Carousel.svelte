@@ -28,7 +28,10 @@
             {#if product.discount}
               <div class="discount-badge">{product.discount}</div>
             {/if}
-            <img src={product.image} alt={product.title} />
+            <div class="discount-badge-img">
+
+                <img src={product.image} alt={product.title} />
+            </div>
           </div>
           
           <div class="product-info">
@@ -96,18 +99,22 @@
   }
 
   .product-card {
-    min-width: 240px;
+    min-width: 230px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    background: #000;
+    width: 20%;
   }
 
   .product-image {
     position: relative;
-    background-color: #f5f5f5;
+    background-color: #fff;
     aspect-ratio: 3/4;
     overflow: hidden;
     margin-bottom: 0.75rem;
+    width: 70%;
+    height: 80%;
   }
 
   .product-image img {
@@ -147,6 +154,16 @@
     font-size: 0.875rem;
     font-weight: 600;
   }
+
+  /* .discount-badge-img{
+    width: 50%;
+    height: 60%;
+
+  }
+  .discount-badge-img img{
+    width: 100%;
+    height: 100%;
+  } */
 
   .product-info {
     margin-bottom: 1rem;
