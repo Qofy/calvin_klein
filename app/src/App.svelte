@@ -1,5 +1,5 @@
 <script>
-  import {Search, Globe, Heart, UserRound, ShoppingBag} from "lucide-svelte";
+  import {Search, Globe, Heart, UserRound, ShoppingBag, X} from "lucide-svelte";
   import ProductDetails from "./pages/ProductDeatils.svelte";
   import Carousel from "./pages/Carousel.svelte";
   import Footer from "./pages/Footer.svelte";
@@ -8,6 +8,17 @@
   import data from '../public/data/article.json';
   
   const { navigation, product, carousel, footer,site } = data;
+
+ 
+  let isOpen = false;
+  
+  function toggleCart() {
+    isOpen = !isOpen;
+  }
+  
+  function closeMenu() {
+    isOpen = false;
+  }
 </script>
 
 <main>
@@ -27,10 +38,67 @@
       <a href="#"><Globe/></a>
       <a href="#"><Heart/></a>
       <a href="#"><UserRound/></a>
-      <a href="#"><ShoppingBag/></a>
+      <a href="#" on:click={toggleCart}><ShoppingBag/></a>
     </div>
   </nav>
   
+<!----------------Shopping Cart Overlay---------------------------->
+
+{#if isOpen}
+    <div class="cart-overlay" on:click={closeMenu}></div>
+    <div class="cart-slider">
+      <div class="cart-header">
+        <h2>Warenkorb</h2>
+        <button class="close-btn" on:click={closeMenu} aria-label="Close cart">
+          <X />
+        </button>
+      </div>
+      
+      <div class="cart-content">
+        <!-- Sample cart items - replace with your actual cart data -->
+        <div class="cart-item">
+          <img src="/path/to/product-image.jpg" alt="Product" />
+          <div class="item-details">
+            <h3>Product Name</h3>
+            <p class="item-price">€99.99</p>
+            <div class="item-quantity">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cart-item">
+          <img src="/path/to/product-image.jpg" alt="Product" />
+          <div class="item-details">
+            <h3>Another Product</h3>
+            <p class="item-price">€149.99</p>
+            <div class="item-quantity">
+              <button>-</button>
+              <span>2</span>
+              <button>+</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Empty cart message -->
+        <!-- <div class="empty-cart">
+          <ShoppingBag />
+          <p>Ihr Warenkorb ist leer</p>
+        </div> -->
+      </div>
+      
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Gesamt:</span>
+          <span class="total-price">€399.97</span>
+        </div>
+        <button class="checkout-btn">Zur Kasse</button>
+      </div>
+    </div>
+  {/if}
+
   <div class="hero">
     {#each product.hero.images as image}
       <div style="background-image: url({image});"></div>
@@ -94,6 +162,245 @@
     gap: clamp(.8rem, 2vw, 1.5rem);
     align-items: center;
   }
+
+  /**-----------------shopping cart-------------------------*/
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .cart-slider {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: clamp(320px, 90vw, 450px);
+    height: 100vh;
+    background: #fff;
+    z-index: 1002;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.3s ease;
+  }
+
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background-image: linear-gradient(to bottom right, #e1d7bd, #e5dcc6, #efeade);
+    border-bottom: 1px solid rgba(206, 47, 36, 0.2);
+  }
+
+  .cart-header h2 {
+    margin: 0;
+    color: #ce2f24;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 600;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    color: #ce2f24;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    border-radius: 4px;
+  }
+
+  .close-btn:hover {
+    background: rgba(206, 47, 36, 0.1);
+    transform: rotate(90deg);
+  }
+
+  .close-btn :global(svg) {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cart-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: #ce2f24 #f3f6fb;
+  }
+
+  .cart-content::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .cart-content::-webkit-scrollbar-track {
+    background: #f3f6fb;
+  }
+
+  .cart-content::-webkit-scrollbar-thumb {
+    background: #ce2f24;
+    border-radius: 3px;
+  }
+
+  .cart-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+  }
+
+  .cart-item:hover {
+    background-color: #fafafa;
+  }
+
+  .cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #f0f0f0;
+  }
+
+  .item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .item-details h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .item-price {
+    margin: 0;
+    color: #ce2f24;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .item-quantity button {
+    background: #f0f0f0;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .item-quantity button:hover {
+    background: #ce2f24;
+    color: #fff;
+  }
+
+  .item-quantity span {
+    min-width: 30px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #999;
+    gap: 1rem;
+  }
+
+  .empty-cart :global(svg) {
+    width: 64px;
+    height: 64px;
+    opacity: 0.3;
+  }
+
+  .cart-footer {
+    padding: 1.5rem 2rem;
+    border-top: 2px solid #eee;
+    background: #fafafa;
+  }
+
+  .cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .total-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ce2f24;
+  }
+
+  .checkout-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #ce2f24;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .checkout-btn:hover {
+    background: #a52419;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(206, 47, 36, 0.3);
+  }
+
+  .checkout-btn:active {
+    transform: translateY(0);
+  }
+
+  /* ============================================
+     ANIMATIONS
+     ============================================ */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
 
   .hero{
     /* background-color: blue; */
