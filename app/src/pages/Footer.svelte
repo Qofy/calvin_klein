@@ -6,9 +6,9 @@
   const { newsletter, columns, languageSelector, copyright, socialLinks } = data;
 </script>
 
-<footer>
+<!-- <footer> -->
   <!-- Newsletter Section -->
-  <div class="newsletter-section">
+  <div class="newsletter-section"> 
     <h2>{newsletter.title}</h2>
     
     <div class="benefits">
@@ -56,23 +56,23 @@
         </a>
       {/each}
     </div>
-  </div>
-</footer>
+   </div> 
+<!-- </footer> -->
 
 
 <style>
-  footer {
-    background-color: #000;
-    color: #fff;
+  /* footer {
+    background-color: #fbb900;
+    color: #e43417;
     padding: 0;
   }
 
-  /* Newsletter Section */
+  
   .newsletter-section {
     text-align: center;
     padding: 4rem 2rem;
     border-bottom: 1px solid #333;
-  }
+  } */
 
   .newsletter-section h2 {
     font-size: clamp(1.5rem, 4vw, 2rem);
@@ -97,8 +97,8 @@
   }
 
   .signup-btn {
-    background-color: #fff;
-    color: #000;
+    background-color: #e43417;
+    color: #fff;
     border: none;
     padding: 0.875rem 3rem;
     font-size: 0.95rem;
@@ -108,7 +108,8 @@
   }
 
   .signup-btn:hover {
-    background-color: #e0e0e0;
+    background-color: #fff;
+    color: #000;
   }
 
   /* Footer Content */
@@ -168,7 +169,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
-    border-top: 1px solid #333;
+    /* border-top: 1px solid #333; */
     flex-wrap: wrap;
     gap: 1rem;
   }

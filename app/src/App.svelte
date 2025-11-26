@@ -137,5 +137,11 @@
     /* background-color: brown; */
     grid-row: 8/ 11;
     grid-column: 1 / 6;
+     background-color: #fbb900;
+    color: #e43417;
+    padding: 0;
+    text-align: center;
+    padding: 4rem 2rem;
+    border-bottom: 1px solid #333;
   }
 </style>

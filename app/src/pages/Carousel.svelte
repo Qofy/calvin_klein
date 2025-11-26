@@ -235,7 +235,9 @@
   }
 
   .add-to-cart:hover {
-    background-color: #333;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid rgba(102,102,102);
   }
 
   .scroll-btn {
