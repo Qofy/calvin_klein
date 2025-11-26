@@ -11,9 +11,15 @@
 
  
   let isOpen = false;
+  let wishlist = [];
+  let isWishlistOpen = false;
   
   function toggleCart() {
     isOpen = !isOpen;
+  }
+  
+   function toggleWishlist() {
+    isWishlistOpen = !isWishlistOpen;
   }
   
   function closeMenu() {
@@ -36,7 +42,12 @@
     <div class="icon">
       <a href="#"><Search/></a>
       <a href="#"><Globe/></a>
-      <a href="#"><Heart/></a>
+      <a href="#" on:click={toggleWishlist} class="wishlist-icon">
+        <Heart fill={wishlist.length > 0 ? '#ce2f24' : 'none'} color={wishlist.length > 0 ? '#ce2f24' : 'currentColor'} />
+        {#if wishlist.length > 0}
+          <span class="badge">{wishlist.length}</span>
+        {/if}
+      </a>
       <a href="#"><UserRound/></a>
       <a href="#" on:click={toggleCart}><ShoppingBag/></a>
     </div>
@@ -44,7 +55,7 @@
   
 <!----------------Shopping Cart Overlay---------------------------->
 
-{#if isOpen}
+  {#if isOpen}
     <div class="cart-overlay" on:click={closeMenu}></div>
     <div class="cart-slider">
       <div class="cart-header">
@@ -111,7 +122,11 @@
 
   <div class="carousel">
     <div class="carousel-section">
-      <Carousel data={carousel} />
+      <Carousel 
+        data={carousel} 
+        bind:wishlist={wishlist}
+        bind:isWishlistOpen={isWishlistOpen}
+      />
     </div>
   </div>
   
@@ -125,12 +140,12 @@
     height: 100vh;
     margin: 0;
   }
- 
   main{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 65px repeat(9, 1fr);
     min-height: 100vh;
+
   }
   
   nav{
@@ -155,12 +170,59 @@
     list-style: none;
     gap: clamp(.8rem, 2vw, 1.5rem);
     align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+  }
+
+  .nav a:hover {
+    opacity: 0.7;
   }
 
   .icon{
     display: flex;
     gap: clamp(.8rem, 2vw, 1.5rem);
     align-items: center;
+  }
+
+  .icon a {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .icon a:hover {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+
+  .wishlist-icon {
+    position: relative;
+  }
+
+  .badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ce2f24;
+    color: white;
+    border-radius: 50%;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px;
   }
 
   /**-----------------shopping cart-------------------------*/
@@ -418,7 +480,7 @@
 }
 
 .logo{
-  width: 150px;
+  width: 230px;
 }
 
   /**----------------Sidebar -------------------------*/
