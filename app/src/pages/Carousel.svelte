@@ -4,10 +4,13 @@
   export let data;
   export let wishlist = [];
   export let isWishlistOpen = false;
+  export let cart = [];
+  export let isCartOpen = false;
   
   const { title, products } = data;
 
   let scrollContainer;
+  let selectedSizes = {}; // Track selected size for each product
   
   function scrollRight() {
     if (scrollContainer) {
@@ -15,14 +18,13 @@
     }
   }
   
+  // Wishlist functions
   function toggleWishlist(product) {
     const index = wishlist.findIndex(item => item.id === product.id);
     
     if (index > -1) {
-      // Remove from wishlist
       wishlist = wishlist.filter(item => item.id !== product.id);
     } else {
-      // Add to wishlist
       wishlist = [...wishlist, product];
     }
   }
@@ -35,12 +37,54 @@
     wishlist = wishlist.filter(item => item.id !== productId);
   }
   
-  function toggleWishlistSlider() {
-    isWishlistOpen = !isWishlistOpen;
-  }
-  
   function closeWishlist() {
     isWishlistOpen = false;
+  }
+  
+  // Cart functions
+  function addToCart(product) {
+    const size = selectedSizes[product.id];
+    
+    if (!size || size === 'Größe') {
+      alert('Bitte wählen Sie eine Größe aus');
+      return;
+    }
+    
+    const existingItemIndex = cart.findIndex(
+      item => item.id === product.id && item.size === size
+    );
+    
+    if (existingItemIndex > -1) {
+      // Increase quantity if item already exists
+      cart[existingItemIndex].quantity += 1;
+      cart = [...cart];
+    } else {
+      // Add new item
+      cart = [...cart, {
+        ...product,
+        size: size,
+        quantity: 1
+      }];
+    }
+    
+    // Reset selected size
+    selectedSizes[product.id] = 'Größe';
+    
+    // Show success feedback
+    const button = document.querySelector(`[data-product-id="${product.id}"] .add-to-cart`);
+    if (button) {
+      const originalText = button.textContent;
+      button.textContent = 'Hinzugefügt!';
+      button.style.background = '#4caf50';
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.style.background = '';
+      }, 1000);
+    }
+  }
+  
+  function handleSizeChange(productId, event) {
+    selectedSizes[productId] = event.target.value;
   }
 </script>
 
@@ -98,7 +142,7 @@
   <div class="carousel-wrapper">
     <div class="carousel-container" bind:this={scrollContainer}>
       {#each products as product}
-        <div class="product-card">
+        <div class="product-card" data-product-id={product.id}>
           <div class="product-image">
             <button 
               class="favorite-btn" 
@@ -130,7 +174,11 @@
           </div>
           
           <div class="product-actions">
-            <select class="size-select">
+            <select 
+              class="size-select"
+              value={selectedSizes[product.id] || 'Größe'}
+              on:change={(e) => handleSizeChange(product.id, e)}
+            >
               <option>Größe</option>
               <option>XS</option>
               <option>S</option>
@@ -139,7 +187,9 @@
               <option>XL</option>
             </select>
             
-            <button class="add-to-cart">Hinzufügen</button>
+            <button class="add-to-cart" on:click={() => addToCart(product)}>
+              Hinzufügen
+            </button>
           </div>
         </div>
       {/each}
@@ -152,9 +202,7 @@
 </div>
 
 <style>
-  /* ============================================
-     WISHLIST SLIDER
-     ============================================ */
+  /* All your existing wishlist styles */
   .wishlist-overlay {
     position: fixed;
     top: 0;
@@ -372,9 +420,7 @@
     box-shadow: 0 4px 12px rgba(206, 47, 36, 0.3);
   }
 
-  /* ============================================
-     CAROUSEL SECTION
-     ============================================ */
+  /* Carousel styles */
   .carousel-section {
     padding: 3rem 2rem;
     background-color: #fff;
@@ -546,7 +592,7 @@
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: all 0.3s;
   }
 
   .add-to-cart:hover {
@@ -579,9 +625,6 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
-  /* ============================================
-     ANIMATIONS
-     ============================================ */
   @keyframes fadeIn {
     from {
       opacity: 0;

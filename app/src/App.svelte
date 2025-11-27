@@ -4,27 +4,61 @@
   import Carousel from "./pages/Carousel.svelte";
   import Footer from "./pages/Footer.svelte";
   
-  
   import data from '../public/data/article.json';
   
-  const { navigation, product, carousel, footer,site } = data;
+  const { navigation, product, carousel, footer, site } = data;
 
- 
   let isOpen = false;
   let wishlist = [];
   let isWishlistOpen = false;
+  let cart = [];
   
   function toggleCart() {
     isOpen = !isOpen;
   }
   
-   function toggleWishlist() {
+  function toggleWishlist() {
     isWishlistOpen = !isWishlistOpen;
   }
   
   function closeMenu() {
     isOpen = false;
   }
+  
+  function closeWishlist() {
+    isWishlistOpen = false;
+  }
+  
+  function updateQuantity(productId, size, delta) {
+    const itemIndex = cart.findIndex(item => item.id === productId && item.size === size);
+    if (itemIndex > -1) {
+      cart[itemIndex].quantity += delta;
+      if (cart[itemIndex].quantity <= 0) {
+        cart = cart.filter((_, index) => index !== itemIndex);
+      } else {
+        cart = [...cart];
+      }
+    }
+  }
+  
+  function removeFromCart(productId, size) {
+    cart = cart.filter(item => !(item.id === productId && item.size === size));
+  }
+  
+  // Calculate total price
+  $: totalPrice = cart.reduce((sum, item) => {
+    const priceString = item.salePrice || item.originalPrice;
+    const price = parseFloat(priceString.replace('€', '').replace(',', '.').trim());
+    return sum + (price * item.quantity);
+  }, 0).toFixed(2);
+  
+  // Calculate total items
+  $: totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  
+  // Debug logs
+  $: console.log('Cart:', cart);
+  $: console.log('Total Items:', totalItems);
+  $: console.log('Total Price:', totalPrice);
 </script>
 
 <main>
@@ -36,7 +70,7 @@
     </div>
     
     <div>
-     <img class="logo" src={site.logo} alt="logo"> 
+      <img class="logo" src={site.logo} alt="logo"> 
     </div>
     
     <div class="icon">
@@ -49,12 +83,16 @@
         {/if}
       </a>
       <a href="#"><UserRound/></a>
-      <a href="#" on:click={toggleCart}><ShoppingBag/></a>
+      <a href="#" on:click={toggleCart} class="cart-icon">
+        <ShoppingBag />
+        {#if totalItems > 0}
+          <span class="badge">{totalItems}</span>
+        {/if}
+      </a>
     </div>
   </nav>
   
 <!----------------Shopping Cart Overlay---------------------------->
-
   {#if isOpen}
     <div class="cart-overlay" on:click={closeMenu}></div>
     <div class="cart-slider">
@@ -66,47 +104,43 @@
       </div>
       
       <div class="cart-content">
-        <!-- Sample cart items - replace with your actual cart data -->
-        <div class="cart-item">
-          <img src="/path/to/product-image.jpg" alt="Product" />
-          <div class="item-details">
-            <h3>Product Name</h3>
-            <p class="item-price">€99.99</p>
-            <div class="item-quantity">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-            </div>
+        {#if cart.length === 0}
+          <div class="empty-cart">
+            <ShoppingBag size={64} />
+            <p>Ihr Warenkorb ist leer</p>
+            <small>Fügen Sie Produkte hinzu, um mit dem Einkauf zu beginnen</small>
           </div>
-        </div>
-        
-        <div class="cart-item">
-          <img src="/path/to/product-image.jpg" alt="Product" />
-          <div class="item-details">
-            <h3>Another Product</h3>
-            <p class="item-price">€149.99</p>
-            <div class="item-quantity">
-              <button>-</button>
-              <span>2</span>
-              <button>+</button>
+        {:else}
+          {#each cart as item (item.id + item.size)}
+            <div class="cart-item">
+              <img src={item.image} alt={item.title} />
+              <div class="item-details">
+                <h3>{item.title}</h3>
+                <p class="item-size">Größe: {item.size}</p>
+                <p class="item-price">{item.salePrice || item.originalPrice}</p>
+                <div class="item-quantity">
+                  <button on:click={() => updateQuantity(item.id, item.size, -1)}>-</button>
+                  <span>{item.quantity}</span>
+                  <button on:click={() => updateQuantity(item.id, item.size, 1)}>+</button>
+                </div>
+                <button class="remove-item-btn" on:click={() => removeFromCart(item.id, item.size)}>
+                  Entfernen
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-        
-        <!-- Empty cart message -->
-        <!-- <div class="empty-cart">
-          <ShoppingBag />
-          <p>Ihr Warenkorb ist leer</p>
-        </div> -->
+          {/each}
+        {/if}
       </div>
       
-      <div class="cart-footer">
-        <div class="cart-total">
-          <span>Gesamt:</span>
-          <span class="total-price">€399.97</span>
+      {#if cart.length > 0}
+        <div class="cart-footer">
+          <div class="cart-total">
+            <span>Gesamt:</span>
+            <span class="total-price">€{totalPrice}</span>
+          </div>
+          <button class="checkout-btn">Zur Kasse</button>
         </div>
-        <button class="checkout-btn">Zur Kasse</button>
-      </div>
+      {/if}
     </div>
   {/if}
 
@@ -126,6 +160,8 @@
         data={carousel} 
         bind:wishlist={wishlist}
         bind:isWishlistOpen={isWishlistOpen}
+        bind:cart={cart}
+        bind:isCartOpen={isOpen}
       />
     </div>
   </div>
@@ -140,12 +176,12 @@
     height: 100vh;
     margin: 0;
   }
+  
   main{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 65px repeat(9, 1fr);
     min-height: 100vh;
-
   }
   
   nav{
@@ -204,7 +240,8 @@
     transform: scale(1.05);
   }
 
-  .wishlist-icon {
+  .wishlist-icon,
+  .cart-icon {
     position: relative;
   }
 
@@ -226,7 +263,7 @@
   }
 
   /**-----------------shopping cart-------------------------*/
-.cart-overlay {
+  .cart-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -325,7 +362,7 @@
 
   .cart-item img {
     width: 80px;
-    height: 80px;
+    height: 100px;
     object-fit: cover;
     border-radius: 8px;
     background: #f0f0f0;
@@ -340,16 +377,23 @@
 
   .item-details h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: #333;
+    line-height: 1.3;
+  }
+
+  .item-size {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
   }
 
   .item-price {
     margin: 0;
     color: #ce2f24;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .item-quantity {
@@ -383,6 +427,24 @@
     font-weight: 600;
   }
 
+  .remove-item-btn {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+    margin-top: 0.25rem;
+  }
+
+  .remove-item-btn:hover {
+    background: #f5f5f5;
+    border-color: #ce2f24;
+    color: #ce2f24;
+  }
+
   .empty-cart {
     display: flex;
     flex-direction: column;
@@ -391,12 +453,25 @@
     height: 100%;
     color: #999;
     gap: 1rem;
+    text-align: center;
+    padding: 2rem;
   }
 
   .empty-cart :global(svg) {
-    width: 64px;
-    height: 64px;
     opacity: 0.3;
+    color: #ce2f24;
+  }
+
+  .empty-cart p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #666;
+  }
+
+  .empty-cart small {
+    color: #999;
+    font-size: 0.9rem;
   }
 
   .cart-footer {
@@ -463,13 +538,10 @@
     }
   }
 
-
   .hero{
-    /* background-color: blue; */
     grid-column: 1 / 4;
     grid-row: 2 / 7;
     grid-template-columns: repeat(2, minmax(min(300px,100%),1fr));
-    /* background-color: #d32f2f; */
   }
 
   .hero div{
@@ -477,40 +549,34 @@
     background-repeat: no-repeat;
     background-size:cover;
     height: 45rem;
-}
+  }
 
-.logo{
-  width: 230px;
-}
+  .logo{
+    width: 230px;
+  }
 
   /**----------------Sidebar -------------------------*/
   .sidebar{
-    /* background-color: burlywood; */
     grid-column: 4 / 6;
     grid-row: 2 / 7;
     display: flex;
     flex-direction: column;
     padding: 5rem 2rem;
-    /* background-color: rgb(161, 200, 234); */
   }
-  
   
 /*----------------Carousel-----------------*/
   .carousel{
-    /* background-color: cadetblue; */
     grid-column: 1 / 6;
     grid-row: 6/ 8;
   }
 
   .footer{
-    /* background-color: brown; */
     grid-row: 8/ 11;
     grid-column: 1 / 6;
-     background-color: #fbb900;
+    background-color: #fbb900;
     color: #e43417;
-    padding: 0;
-    text-align: center;
     padding: 4rem 2rem;
+    text-align: center;
     border-bottom: 1px solid #333;
   }
 </style>
